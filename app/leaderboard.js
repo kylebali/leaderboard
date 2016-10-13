@@ -3,23 +3,23 @@
  */
 PlayersList = new Mongo.Collection('players');
 
-if(Meteor.isClient){
+if (Meteor.isClient) {
 
   Template.leaderboard.helpers({
-    'player': function(){
+    'player': function () {
       return PlayersList.find();
     },
-    'selectedClass': function(){
+    'selectedClass': function () {
       var playerId = this._id;
       var selectedPlayer = Session.get('selectedPlayer');
-      if(playerId == selectedPlayer){
+      if (playerId == selectedPlayer) {
         return "selected"
       }
     }
   });
 
   Template.leaderboard.events({
-    'click .player': function(){
+    'click .player': function () {
       var playerId = this._id;
       Session.set('selectedPlayer', playerId);
     }
@@ -27,6 +27,6 @@ if(Meteor.isClient){
 
 }
 
-if(Meteor.isServer){
+if (Meteor.isServer) {
 
 }
